@@ -6,14 +6,8 @@ import (
 	"golang.org/x/tools/go/analysis"
 )
 
-type analyzerPlugin struct{}
-
 // This must be implemented
-func (*analyzerPlugin) GetAnalyzers() []*analysis.Analyzer {
-	return []*analysis.Analyzer{
-		linters.TodoAnalyzer,
-	}
+func New(conf any) ([]*analysis.Analyzer, error) {
+	return []*analysis.Analyzer{linters.TodoAnalyzer}, nil
 }
 
-// This must be defined and named 'AnalyzerPlugin'
-var AnalyzerPlugin analyzerPlugin
